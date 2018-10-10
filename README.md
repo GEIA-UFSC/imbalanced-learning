@@ -7,16 +7,16 @@ Conceptualization of imbalanced datasets as well as techniques to overcome it, a
 
 ```
 pip install -r requirements.txt
+jupyter notebook
 ```
 
---------
     ├── presentation.ipynb                   <- Content of the presentation (Use RISE to enter slide mode)
     ├── problem_statement_and_analysis.ipynb <- Description of the the Hackaton used as example
     ├── example_problem.ipynb                <- Attempts to solve the example approaching the problem
     ├── example_data.ipynb                   <- Attempts to solve the example approaching the dataset
     ├── example_algorithms.ipynb             <- Attempts to solve the example using different algorithms
     
---------
+
 
 ## Dependencies
 ```

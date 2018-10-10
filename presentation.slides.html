@@ -13242,8 +13242,27 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Imbalanced-datasets">Imbalanced datasets<a class="anchor-link" href="#Imbalanced-datasets">&#182;</a></h1><p>Artur Back de Luca</p>
+<h1 id="Imbalanced-learning">Imbalanced learning<a class="anchor-link" href="#Imbalanced-learning">&#182;</a></h1><p>Artur Back de Luca</p>
 <p>GEIA - Grupo de estudos em Inteligência Aritificial</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Content:">Content:<a class="anchor-link" href="#Content:">&#182;</a></h2><ul>
+<li>Defintion</li>
+<li>Context</li>
+<li>Problematic</li>
+<li>Approaches:<ol>
+<li>Problem based approaches</li>
+<li>Data based approaches</li>
+<li>Algorithm based approaches</li>
+</ol>
+</li>
+<li>Example</li>
+</ul>
 
 </div>
 </div>
@@ -13251,20 +13270,42 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Context">Context<a class="anchor-link" href="#Context">&#182;</a></h2><p>Many of the real world problems envolve some sort of imbalance in their datasets</p>
-<p>Several of them are intrinsic to their environment:</p>
-<ol>
-    <li><b>Banking:</b> Fraud detection (there are way less fraudulent than authentic transactions)</li>
-    <li><b>Health:</b> Disease detection (rare diseases)</li>
-    <li><b>Manufacturing:</b> Flaw detection (e.g. failed welded joint in product)</li>
-</ol>
+<h3 id="Imbalanced-datasets">Imbalanced datasets<a class="anchor-link" href="#Imbalanced-datasets">&#182;</a></h3><p>&ensp;&ensp;&ensp;&ensp;
+<em>An unequal proportion of class examples</em></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Context">Context<a class="anchor-link" href="#Context">&#182;</a></h2><p>Several real world problems involve some sort of class imbalance</p>
+
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It's important to notice that it applies solely to <strong>classification</strong> problems</p>
+<p><ol>
+    <li><b>Banking:</b> Fraud detection (there are less fraudulent than authentic transactions)</li>
+    <li><b>Health:</b> Disease detection (rare conditions)</li>
+    <li><b>Manufacturing:</b> Flaw detection (e.g. failed welded joint in product)</li>
+</ol>
+<br><br><br><br></p>
+<p style="font-size:0.8em; text-align:right">
+<a href="https://pdfs.semanticscholar.org/6e19/3366945bf3bd72d5ba906e3982ac4d8ae874.pdf">[1]</a>    : Chan, P., & Stolfo, S. (2001). Toward scalable learning with non-uniform class and cost distributions: A case study in credit card fraud detection<br>
+<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3163175/pdf/1472-6947-11-51.pdf">[2]</a>: Khalilia, M., Chakraborty, S., & Popescu, M. (2011). Predicting disease risks from highly imbalanced data using random forest <br>
+<a href="https://sci2s.ugr.es/keel/pdf/specific/articulo/liao_classification_2008.pdf">[3]</a>: Liao, T. (2008). Classification of weld flaws with imbalanced data
+
+</p>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It's important to notice that it applies solely to <strong>classification</strong> problems and it is only evident on <strong>supervised</strong> learning</p>
 
 </div>
 </div>
@@ -13272,30 +13313,566 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-are-Imbalanced-datasets?">What are Imbalanced datasets?<a class="anchor-link" href="#What-are-Imbalanced-datasets?">&#182;</a></h2>
+<h2 id="What-are-Imbalanced-datasets?">What are Imbalanced datasets?<a class="anchor-link" href="#What-are-Imbalanced-datasets?">&#182;</a></h2><p>An unequal proportion of class examples.</p>
+
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>However, there's no such thing as a:</p>
+<ul>
+<li>Equal set of examples</li>
+<li>Standard threshold of imbalance proportion</li>
+</ul>
 
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Imbalance-proportion-scale">Imbalance proportion scale<a class="anchor-link" href="#Imbalance-proportion-scale">&#182;</a></h2><p>There's, however, consensus regarding its severity:</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>2:1  -  <code>marginally imbalanced</code></li>
+<li>10:1 - <code>modestly imbalanced</code></li>
+<li>≥100:1 - <code>extremely imbalanced</code></li>
+<li>≥10⁶:1 - <code>absolute rarity</code></li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-does-it-matter?">Why does it matter?<a class="anchor-link" href="#Why-does-it-matter?">&#182;</a></h2><p><img src="./pictures/error_imbalance_ratio.png" width="1200"/></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-metric-trap">A metric trap<a class="anchor-link" href="#A-metric-trap">&#182;</a></h2><p style="font-size:0.8em;"><i>Accuracy paradox</i></p><p>Imagine that you have a 99:1 dataset</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If your model estimates that all of your dataset has the same value the predominant set:</p>
+<p><code>Accuracy (ACC):</code> 99%</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>Is this good? Most likely not. The model hasn't learned the interactions between the classes and their features, it simply learned to guess the dominant value</p>
+</blockquote>
+
+</div>
+</div>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>In fact, most algorithms
+are still designed and tested much more thoroughly for accuracy optimization
+than for the optimization of other evaluation metrics. This issue is impacted by
+the metrics used to guide the heuristic search process. For example, decision trees
+are generally formed in a top–down manner and the tree construction process
+focuses on selecting the best test condition to expand the extremities of the tree.
+The quality of the test condition (i.e., the condition used to split the data at the
+node) is usually determined by the “purity” of a split, which is often computed as
+the weighted average of the purity values of each branch, where the weights are
+determined by the fraction of examples that follow that branch.<br></p>
+<p  style="font-size:0.8em; text-align:right">[4] Weiss, G. M. (2013). Foundations of Imbalanced Learning. (pg. 24)</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</aside></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Algorithm-level-issues">Algorithm level issues<a class="anchor-link" href="#Algorithm-level-issues">&#182;</a></h2><p>e.g.: Decision Trees</p>
+<p><img src="./pictures/decision_tree.png" width="750"/></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-overcome?">How to overcome?<a class="anchor-link" href="#How-to-overcome?">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Problem definition level approaches</li>
+<li>Data level approaches</li>
+<li>Algorithm level approaches</li>
+</ol>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-Problem-definition-level-approaches">1. Problem definition level approaches<a class="anchor-link" href="#1.-Problem-definition-level-approaches">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Redefine-the-problem">Redefine the problem<a class="anchor-link" href="#Redefine-the-problem">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+Before jumping in more sophisticated approaches, one interest attempt is working with a specific subdomain of interest, rather than the whole dataset, where the relative imbalance is lessened.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>As a simple example, in medical diagnosis, one could restrict the population to people over 90 years of age, especially if the targeted disease tends to be more common in the aged.</p>
+<p  style="font-size:0.8em; text-align:right">[4] Weiss, G. M. (2013). Foundations of Imbalanced Learning. (pg. 28)</p>
+</blockquote>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Use-Appropriate-Evaluation-Metrics">Use Appropriate Evaluation Metrics<a class="anchor-link" href="#Use-Appropriate-Evaluation-Metrics">&#182;</a></h2><p>Instead of choosing ACC and relative metrics, utilize metrics that identify the incorrect classification of imbalanced samples</p>
+<ul>
+<li>Confusion Matrix</li>
+<li>ROC and AUC</li>
+<li>Precision and Recall</li>
+<li>F-measure and the F1-score</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Confusion-Matrix">Confusion Matrix<a class="anchor-link" href="#Confusion-Matrix">&#182;</a></h2>
+<pre><code>                    +------------------+----------+----------+
+                    | Predicted/Actual | Positive | Negative |
+                    +------------------+----------+----------+
+                    | Positive         |    TP    |    FP    |
+                    | Negative         |    FN    |    TN    |
+                    +------------------+----------+----------+</code></pre>
+<h2 id="ROC-Curve">ROC Curve<a class="anchor-link" href="#ROC-Curve">&#182;</a></h2>$$True\:Positive_{Rate}\:(TPR) = \frac{TP}{FN+TP}$$$$False\:Positive_{Rate}\:(FPR) = \frac{FP}{FN+TP}$$
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Consider in this and in the other definitions that <strong>Positive</strong> is the minor class</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="ROC-Curve">ROC Curve<a class="anchor-link" href="#ROC-Curve">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">frame</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div></div></section></section>
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <iframe
+            width="600"
+            height="555"
+            src="http://www.navan.name/roc/#slider"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By interacting with the slider we are changing the hability of the model to sepate the two analyzed classes</p>
+
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="To-get-an-absolute-measure,-use-the-AUC-(Area-under-the-curve)">To get an absolute measure, use the AUC (Area under the curve)<a class="anchor-link" href="#To-get-an-absolute-measure,-use-the-AUC-(Area-under-the-curve)">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div>
+    <img src="./pictures/roc.png" width="700" align="left"/>
+    <br><br><br>
+    <p>Values</p>
+    <p>1.0 - Perfect</p>
+    <p>0.8 - Good</p>
+    <p>0.5 - Random</p>
+</div>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Use-Appropriate-Evaluation-Metrics">Use Appropriate Evaluation Metrics<a class="anchor-link" href="#Use-Appropriate-Evaluation-Metrics">&#182;</a></h2><h3 id="Precision-and-Recall">Precision and Recall<a class="anchor-link" href="#Precision-and-Recall">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$Precision = \frac{TP}{FP+TP}$$$$Recall = \frac{TP}{FN+TP}$$
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recall correspond to the $True\:Positive_{Rate}\:(TPR)$</p>
+
+</div>
+</div>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./pictures/precision_recall.png" width="600" align="center"/></p>
+
+</div>
+</div>
+</div>
+</aside></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Precision</em> represent how many of the positive predictions correspond to correct ones</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="font-size:0.8em;"><b>A perfect Precision</b> means that every positive result estimated by the model engine was relevant (but says nothing about whether all the positive results were identified)</p><p><br></p>
+<hr>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Recall</em> represent how many of the positive class values where correctly predicted</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="font-size:0.8em;"><b>A perfect Recall</b> means all positive results were identified by the model (but says nothing about how many of the positive results were incorrect)</p>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One measure might be more important than the other depending on its conjecture.</p>
+<p><br>For instance, in medical diagnostics one might prioritize Recall since is more beneficial to point out all the potential positives that it is to have a precise model but to miss positive results</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="F-measure">F-measure<a class="anchor-link" href="#F-measure">&#182;</a></h2><p>The F-measure is a harmonic mean of <em>Precision</em> and <em>Recall</em></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$F_\beta = (1+\beta^2)\frac{Precision.Recall}{(\beta^2.Precision)+Recall}$$
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When <em>Precision</em> and <em>Recall</em> have the same weight, the metric is name the <strong>F1-Score</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$F_1 = \frac{2.Precision.Recall}{Precision+Recall}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div style="text-align: right"><a href="https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-unranked-retrieval-sets-1.html#10657">Why a harmonic mean?</a></div>
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-Data-level-approaches">2. Data level approaches<a class="anchor-link" href="#2.-Data-level-approaches">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sampling-Methods">Sampling Methods<a class="anchor-link" href="#Sampling-Methods">&#182;</a></h2><p><br></p>
+<ul>
+<li>Undersampling - applied to the majority class</li>
+<li>Oversampling - applied to the minority class</li>
+</ul>
+<p><br></p>
+<p>Sampling methods are the most common methods for dealing with imbalanced data [4]<br>
+These methods are primarily employed to address the problem with relative rarity but do not address the issue of absolute rarity [4].</p>
+<p style="text-align: right; font-size:0.8em">[4] Weiss, G. (2013). Foundations of Imbalanced Learning (pg. 36)</p>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Undersampling">Undersampling<a class="anchor-link" href="#Undersampling">&#182;</a></h2><p><br></p>
+<ol>
+<li><strong><a href="http://conteudo.icmc.usp.br/pessoas/gbatista/files/ifip2008.pdf">Random undersampling</a>:</strong> random elimination of the predominant class, equalizing the class proportion;</li>
+</ol>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li><strong><a href="https://www.researchgate.net/publication/271913184_Undersampled_K_K_-means_approach_for_handling_imbalanced_distributed_data">K-means undersampling</a>:</strong> separate the predominant label in classes and remove from those the redudant examples;</li>
+</ol>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li><strong><a href="http://conteudo.icmc.usp.br/pessoas/gbatista/files/iicai2009.pdf">Tomek links</a>:</strong> calculate the distance between two values in different classes. If the distance is the smallest between one element of this pair and any other data point from a different class, the pair is a Tomek link. In a Tomek link is safe to assume that one of the pair is either noise or the pair is at the borderline. As a undersampling technique the Tomek link technique removes the value that belongs to the majority class;
+<br><br><p  style='text-align: right; font-size: 0.8em'>More techniques described in <a href=http://conteudo.icmc.usp.br/pessoas/gbatista/files/iicai2009.pdf>[5] PRATI, BATISTA and MONARD. 2009</a></p></li>
+</ol>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Oversampling">Oversampling<a class="anchor-link" href="#Oversampling">&#182;</a></h2><ol>
+<li><strong><a href="http://conteudo.icmc.usp.br/pessoas/gbatista/files/ifip2008.pdf">Random oversampling</a>:</strong> is a non-heuristic method that aims to balance class distribution through the random replication of minority class examples</li>
+</ol>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li><strong><a href="https://jair.org/index.php/jair/article/view/10302/24590">SMOTE</a>:</strong> <em>Synthetic Minority Over-sampling Technique</em>: the minority class is segmented using a <em>K-means</em> algorithm. New minority samples are generated based on the difference between data a point and a few of its nearest neighbors based one the balance proportion desired. This difference is applied to each feature of the data points and are multiplied by a random number ranging from 0-1. These values are then summed to the selected data point to generate e new syntetic observation</li>
+</ol>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li><strong><a href="https://sci2s.ugr.es/keel/pdf/algorithm/congreso/2008-He-ieee.pdf">ADASYN</a>:</strong> <em>Adaptive Synthetic</em> Sampling Approach: uses K nearest neighbors to identify the minority class data points that are more difficult to learn (those covered with a dense majority neighborhood), the algorithm then creates the number of synthetic examples accordingly, also using the K-nearest neighbors to combine a data point with another close minority example
+<br><br></li>
+</ol>
+<p  style='text-align: right; font-size:0.8em'>More techniques described in <a href=http://conteudo.icmc.usp.br/pessoas/gbatista/files/iicai2009.pdf>[5] PRATI, BATISTA and MONARD. 2009</a></p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-Algorithm-level-approaches">3. Algorithm level approaches<a class="anchor-link" href="#3.-Algorithm-level-approaches">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Cost-sensitive-learning">Cost sensitive learning<a class="anchor-link" href="#Cost-sensitive-learning">&#182;</a></h2><p>Cost sensitive learning produces different weights in the classification task. By shifting the probability threshold to higher or lower values one can amplify or attenuate the determination of a particular class.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is usually done, in algorithms like Relabeling, using the ratio of false predictions in the training set:</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$p = \frac{FP}{FP+FN}$$<p>The probability threshold is then used in the test model to guarantee that only results equal or greater than this probability</p>
+<p style="font-size: 0.8em; text-align:right">[6] LING, C. X., SHENG, V. S. (2008). Cost-Sensitive Learning and the Class Imbalance Problem</p>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Emsemble-methods">Emsemble methods<a class="anchor-link" href="#Emsemble-methods">&#182;</a></h2><p>Ensemble methods aim to leverage the classification power of multiple base learners (learned on different subsets of the training data) to improve on the classification performance over traditional classification algorithms.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>Under an average error rate of less than 50% and the probability of misprediction of each classifier being independent of the others, the expected error rate of an instance goes to zero as the number of classifiers goes to infinity.</p>
+<p style="text-align: right; font-size: 0.8em">[7] Hansen, L. K. & Salamon P. (1990) Neural network ensembles</p>
+</blockquote>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br></p>
+<p><strong><a href="https://www.youtube.com/watch?v=GM3CDQfQ4sw">Boosting</a></strong>: Create subsets of the training data, train one model and use the whole set to evaluate the model. Increase the sampling probability of the data points in which the model didn't perform as well and repeat the process for different models (e.g. AdaBoost, XGBoost)</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><a href="https://www.youtube.com/watch?v=2Mg8QD0F1dQ">Bagging</a></strong>: Generate several subsamples and train different models subsquently (e.g. ScikitLearn's Bagging Classifier)</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Many ensemble methods have been combined with sampling strategies to create ensemble methods that are more suitable for dealing with class imbalance (e.g. AdaBoost + SMOTE = SMOTEBoost)</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Example <br><br></h2>
+<p><img src="https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2018/07/McKinsey-hackathon.jpg"></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Wrap-up">Wrap up<a class="anchor-link" href="#Wrap-up">&#182;</a></h2><ol>
+<li>Identify the imbalanced proportion and analyze the relationship between features and target;</li>
+<li>Use the correct metrics and segment the problem when possible;</li>
+<li>Start small (one technique at a time), preferably using the easier ones first;</li>
+<li>If the problem requires, use an ensemble of methods to derive the result, but be carefull with explainability and performance;</li>
+<li>Always validate the model.</li>
+</ol>
+
+</div>
+</div>
+</div></section></section>
 </div>
 </div>
 

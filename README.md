@@ -1,4 +1,8 @@
 # Imbalanced Learning
+[![slides](https://img.shields.io/badge/-view_slides-green?style=flat)](https://nbviewer.jupyter.org/github/GEIA-UFSC/imbalanced-learning/blob/master/presentation.slides.html#/)
+[![author](https://img.shields.io/badge/author-%40artur--deluca-blue?style=flat)](https://github.com/artur-deluca)
+![date](https://img.shields.io/badge/date-10.09.2018-blue)
+
 
 Conceptualization of imbalanced datasets as well as techniques to overcome it, and a practical example using the [4th Mckinsey Analytics Hackathon](https://datahack.analyticsvidhya.com/contest/mckinsey-analytics-online-hackathon-4/#problem_statement) hosted by Analytics Vidhya
 
